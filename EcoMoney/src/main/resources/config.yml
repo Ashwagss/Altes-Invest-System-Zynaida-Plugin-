@@ -1,0 +1,79 @@
+# ============================================
+#            EcoMoney Konfiguration
+#          Sichere Economy für Zynaida.net
+# ============================================
+
+# Speicher-Einstellungen
+storage:
+  # Speichertyp: "yaml" oder "mysql"
+  type: yaml
+  
+  # Auto-Save Intervall in Sekunden (nur für YAML)
+  auto-save-interval: 300
+  
+  # MySQL Einstellungen (nur wenn type: mysql)
+  mysql:
+    host: localhost
+    port: 3306
+    database: ecomoney
+    username: root
+    password: ""
+    useSSL: false
+
+  # Cross-Server Synchronisierung (nur für MySQL)
+  sync:
+    # Aktiviert die Synchronisierung zwischen mehreren Servern
+    enabled: false
+    # Polling-Intervall in Sekunden
+    interval: 3
+
+# Economy Einstellungen
+economy:
+  # Startguthaben für neue Spieler
+  starting-balance: 1000.0
+  
+  # Währungssymbol
+  currency-symbol: "$"
+  
+  # Währungsname (Singular)
+  currency-name: "Coin"
+  
+  # Währungsname (Plural)
+  currency-name-plural: "Coins"
+  
+  # Format für Geldanzeige
+  # Verfügbare Platzhalter: {symbol}, {amount}
+  format: "{symbol}{amount}"
+  
+  # Mindestbetrag für Überweisungen
+  min-transfer: 0.01
+  
+  # Maximaler Überweisungsbetrag pro Transaktion
+  max-transfer: 1000000000.0
+  
+  # Einträge pro Seite bei /baltop
+  baltop-entries-per-page: 10
+  
+  # Maximale Einträge in der Baltop-Liste
+  baltop-max-entries: 100
+
+# Nachrichten (mit & Farbcodes)
+messages:
+  # Prefix für alle Nachrichten
+  prefix: "&8[&6EcoMoney&8] "
+  
+  # Kontostand-Nachricht
+  balance: "&7Dein Kontostand: &a{balance}"
+  balance-other: "&7Kontostand von &e{player}&7: &a{balance}"
+  
+  # Pay-Nachrichten
+  pay-sent: "&aDu hast &e{amount} &aan &e{player} &agesendet!"
+  pay-received: "&aDu hast &e{amount} &avon &e{player} &aerhalten!"
+  
+  # Fehler-Nachrichten
+  no-permission: "&cDu hast keine Berechtigung für diesen Befehl!"
+  player-not-found: "&cSpieler nicht gefunden!"
+  invalid-amount: "&cUngültiger Betrag!"
+  not-enough-money: "&cDu hast nicht genügend Geld!"
+  cannot-pay-self: "&cDu kannst dir selbst kein Geld senden!"
+  no-account: "&cDieser Spieler hat kein Konto!"

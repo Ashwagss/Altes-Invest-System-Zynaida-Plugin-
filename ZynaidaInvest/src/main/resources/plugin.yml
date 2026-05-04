@@ -1,0 +1,36 @@
+name: ZynaidaInvest
+version: 1.1.0
+main: net.zynaida.invest.ZynaidaInvest
+api-version: '1.21'
+description: Realistisches Investment-System mit Geld & Shards für Zynaida.net
+author: Zynaida
+website: https://zynaida.net
+
+softdepend:
+  - EcoMoney
+  - floodgate
+  - PlaceholderAPI
+
+commands:
+  invest:
+    description: Investment-System öffnen
+    usage: /invest [portfolio|buy|sell|info|top|help]
+    aliases: [börse, boerse, stocks, aktien]
+  investadmin:
+    description: Investment-Admin Befehle
+    usage: /investadmin [reload|save|setprice|crash|boom|reset|setnpc|removenpc|info]
+    permission: zynaidainvest.admin
+
+permissions:
+  zynaidainvest.use:
+    description: Investment-System nutzen
+    default: true
+  zynaidainvest.admin:
+    description: Admin-Befehle
+    default: op
+  zynaidainvest.*:
+    description: Alle Berechtigungen
+    default: op
+    children:
+      zynaidainvest.use: true
+      zynaidainvest.admin: true

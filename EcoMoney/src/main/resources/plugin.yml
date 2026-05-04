@@ -1,0 +1,64 @@
+name: EcoMoney
+version: ${project.version}
+main: net.zynaida.ecomoney.EcoMoney
+api-version: "1.21"
+author: Zynaida
+description: Sichere Economy mit Vault-Integration für Minecraft Server (Java & Bedrock)
+website: https://zynaida.net
+
+softdepend:
+  - Vault
+  - PlaceholderAPI
+  - floodgate
+
+commands:
+  balance:
+    description: Zeigt dein Guthaben an
+    aliases: [bal, money, geld, kontostand]
+    usage: /<command> [Spieler]
+    
+  pay:
+    description: Überweise Geld an einen anderen Spieler
+    aliases: [zahlen, senden, send]
+    usage: /<command> <Spieler> <Betrag>
+    
+  balancetop:
+    description: Zeigt die reichsten Spieler
+    aliases: [baltop, moneytop, top]
+    usage: /<command> [Seite]
+    
+  ecoadmin:
+    description: Admin-Befehle für die Economy
+    aliases: [eco, economy]
+    usage: /<command> <set|give|take|reset|reload> [Spieler] [Betrag]
+
+permissions:
+  ecomoney.*:
+    description: Alle EcoMoney Berechtigungen
+    default: op
+    children:
+      ecomoney.balance: true
+      ecomoney.balance.others: true
+      ecomoney.pay: true
+      ecomoney.baltop: true
+      ecomoney.admin: true
+
+  ecomoney.balance:
+    description: Eigenes Guthaben anzeigen
+    default: true
+    
+  ecomoney.balance.others:
+    description: Guthaben anderer Spieler anzeigen
+    default: op
+    
+  ecomoney.pay:
+    description: Geld an andere Spieler senden
+    default: true
+    
+  ecomoney.baltop:
+    description: Balance Top anzeigen
+    default: true
+    
+  ecomoney.admin:
+    description: Admin-Befehle verwenden
+    default: op

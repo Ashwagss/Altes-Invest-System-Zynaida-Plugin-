@@ -1,0 +1,70 @@
+# ==========================================
+#  ZynaidaInvest - Konfiguration
+#  Investment-System für Zynaida.net
+# ==========================================
+
+# Portfolio-Speicher
+storage:
+  type: yaml  # "yaml" oder "mysql"
+  mysql:
+    host: localhost
+    port: 3306
+    database: zynaidainvest
+    username: root
+    password: ""
+    useSSL: false
+
+# Shards-Währung (lobby_players MySQL Tabelle vom LobbyPlugin)
+shards:
+  enabled: true
+  mysql:
+    host: localhost
+    port: 3306
+    database: lobby
+    username: root
+    password: ""
+    useSSL: false
+
+# Investment-Einstellungen
+investment:
+  transaction-fee-percent: 1.5
+  min-amount: 100
+  max-amount: 10000000
+  max-positions: 15
+
+# Portfolio-Tiers (Kosten: Geld + Shards benötigt!)
+portfolio:
+  tiers:
+    tier1:
+      name: "Basis"
+      money-cost: 5000      # EcoMoney Kosten
+      shards-cost: 500       # Lobby-Shards Kosten
+      max-positions: 5
+    tier2:
+      name: "Premium"
+      money-cost: 25000
+      shards-cost: 2500
+      max-positions: 10
+    tier3:
+      name: "Elite"
+      money-cost: 100000
+      shards-cost: 10000
+      max-positions: 20
+
+# Markt-Einstellungen
+market:
+  update-interval-ticks: 1200  # 60 Sekunden
+  news-interval-ticks: 6000   # 5 Minuten
+  dividend-interval-ticks: 72000  # 1 Stunde
+  broadcast-news: true
+
+# Cross-Server-Synchronisation (erfordert MySQL!)
+cross-server:
+  enabled: false              # true = Master-Slave Sync aktivieren
+  role: master                # "master" (simuliert Preise) oder "slave" (liest aus DB)
+  sync-interval-ticks: 100    # Slave: Wie oft aus DB lesen (100 = 5 Sekunden)
+  server-id: "server-1"       # Eindeutige Server-ID
+
+# Nachrichten
+messages:
+  prefix: "§8[§6§lInvest§8] "
